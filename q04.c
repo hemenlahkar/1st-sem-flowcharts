@@ -1,11 +1,12 @@
 #include<stdio.h>
 int main(){
-    int r;
-    float area, peri;
-    printf("\nEnter the radius of the circle: ");
-    scanf("%d", &r);
-    area = 3.14 * r * r;
-    peri = 2 * 3.14 * r;
-    printf("\nThe area of the circle is %.2f\nThe perimeter of the circle is %.2f", area, peri);
+    int BASE, HEIGHT;
+    float area;
+    printf("\nEnter Base of the triangle: ");
+    scanf("%d", &BASE);
+    printf("\nEnter Height of the triangle: ");
+    scanf("%d", &HEIGHT);
+    area = 0.5 * BASE * HEIGHT;
+    printf("\nThe area of the triangle is %.1f", area);
     return 0;
 }
