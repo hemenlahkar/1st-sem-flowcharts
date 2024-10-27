@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Enter a price of an item and calculate net amount after 15% discount
 int main()
 {
     int price;

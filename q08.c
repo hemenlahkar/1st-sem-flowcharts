@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Enter a number and check whether it is positive or negative
 int main()
 {
     int N;

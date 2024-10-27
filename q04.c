@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Calculate the area of a triangle
 int main(){
     int BASE, HEIGHT;
     float area;

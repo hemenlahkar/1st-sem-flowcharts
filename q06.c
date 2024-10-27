@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Interchange two numbers without using third variable
 int main()
 {
     int A, B;

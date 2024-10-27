@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Calculate average of 5 numbers
 int main()
 {
     int a, b, c, d, e;

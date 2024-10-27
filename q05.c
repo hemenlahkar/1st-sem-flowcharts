@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Calculate the area and circumference of a circle
 int main(){
     int r;
     float area, circ;
