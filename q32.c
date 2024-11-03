@@ -3,8 +3,7 @@
 int checkPalindrome(char *w)
 {
     int len, flag = 1;
-    for (len = 0; w[len] != 0; len++)
-        ;
+    for (len = 0; w[len] != 0; len++);
     for (int i = 0; i < len / 2; i++)
     {
         if (w[i] != w[len - i - 1])
