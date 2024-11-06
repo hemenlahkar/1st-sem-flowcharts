@@ -1,4 +1,5 @@
 #include<stdio.h>
+//Smaller of two numbers
 int main()
 {
     int A, B;
