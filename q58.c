@@ -4,8 +4,10 @@ For example AB CDE FG, result will be BA EDC GF*/
 
 int main()
 {
-    char str[] = "This is a sample string", t;
+    char str[100], t;
     int i, j, k, l;
+    printf("Enter the sentence: ");
+    gets(str);
     for (i = 0; str[i] != 0; i++)
     {
         if (i == 0 || str[i] != ' ')
