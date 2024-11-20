@@ -27,7 +27,8 @@ void deleteFirstOccurance(char *str)
     char ch;
     printf("Enter the character: ");
     scanf("%c", &ch);
-    for (i = 0; str[i] != 0 || str[i] != ch; i++);
+    fflush(stdin);
+    for (i = 0; str[i] != 0 && str[i] != ch; i++);
     if (str[i] == ch)
     {
         for (; str[i] != 0; i++)
@@ -43,7 +44,7 @@ void deleteAllOccurance(char *str)
     char ch;
     printf("Enter the character: ");
     scanf("%c", &ch);
-    for (int i = 0; str[i] != 0; i++)
+    for (i = 0; str[i] != 0; i++)
     {
         if(str[i] == ch)
         {
@@ -60,11 +61,13 @@ int main()
     int op;
     printf("Enter the string: ");
     scanf("%[^\n]", str);
+    fflush(stdin);
     printf("\n1. Delete first occurance of specific character");
     printf("\n2. Delete all occurances of specific character");
     printf("\n3. Delete character from specific position");
     printf("\nEnter the option: ");
     scanf("%d", &op);
+    fflush(stdin);
     switch (op)
     {
     case 1:
@@ -81,6 +84,6 @@ int main()
         printf("Invalid option!!");
         break;
     }
-    printf("Resultant string: \"%s\"", str);
+    printf("\nResultant string: \"%s\"\n", str);
     return 0;
 }
