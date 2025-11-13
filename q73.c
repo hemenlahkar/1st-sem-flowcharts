@@ -17,6 +17,13 @@ int **createMatrix(int r, int c)
     return result;
 }
 
+void freeMatrix(Matrix *A)
+{
+    for(int i = 0; i < A->row; i++)
+        free(A->matrix[i]);
+    free(A->matrix);
+}
+
 void inputMatrix(Matrix *A)
 {
     int r, c;
@@ -99,6 +106,32 @@ int multiplyMatrix(Matrix A, Matrix B, Matrix *Output)
     return 1;
 }
 
+int transposeMatrix(Matrix *A)
+{
+    if (A->column == A->row)
+    {
+        for (int i = 0; i < A->row; i++)
+            for (int j = 0; j < A->column; j++)
+            {
+                int temp = A->matrix[i][j];
+                A->matrix[i][j] = A->matrix[j][i];
+                A->matrix[j][i] = temp;
+            }
+        return 1;
+    }
+    Matrix B;
+    B.row = A->column;
+    B.column = A->row;
+    B.matrix = createMatrix(B.row, B.column);
+
+    for(int i = 0; i < B.row; i++)
+        for(int j = 0; j < B.column; j++)
+            B.matrix[i][j] = A->matrix[j][i];
+    freeMatrix(A);
+    *A = B;
+    return 1;
+}
+
 int main()
 {
     Matrix A, B, C, D;
@@ -114,5 +147,9 @@ int main()
         printf("Multiplication of the two matrix:\n");
         displayMatrix(D);
     }
+    inputMatrix(&C);
+    transposeMatrix(&C);
+    printf("\nTranspose of the matrix:\n");
+    displayMatrix(C);
     return 0;
 }
