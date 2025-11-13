@@ -1,8 +1,9 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 // Matrix addition, multiplication and transpose
 
-typedef struct {
+typedef struct
+{
     int **matrix;
     int row, column;
 } Matrix;
@@ -10,7 +11,7 @@ typedef struct {
 int **createMatrix(int r, int c)
 {
     int **result = (int **)malloc(r * sizeof(int *));
-    for(int i = 0; i < r; i++)
+    for (int i = 0; i < r; i++)
         result[i] = (int *)malloc(c * sizeof(int));
 
     return result;
@@ -30,7 +31,7 @@ void inputMatrix(Matrix *A)
         for (size_t j = 0; j < c; j++)
         {
             fflush(stdin);
-            printf("Enter element[%d][%d]: ", i+1, j+1);
+            printf("Enter element[%d][%d]: ", i + 1, j + 1);
             scanf("%d", &(A->matrix[i][j]));
         }
     }
@@ -38,7 +39,7 @@ void inputMatrix(Matrix *A)
 
 void displayMatrix(Matrix A)
 {
-    if(A.row == 0 || A.column == 0)
+    if (A.row == 0 || A.column == 0)
         return;
     for (size_t i = 0; i < A.row; i++)
     {
@@ -48,7 +49,6 @@ void displayMatrix(Matrix A)
         }
         putchar('\n');
     }
-    
 }
 
 int addMatrix(Matrix A, Matrix B, Matrix *Output)
@@ -72,13 +72,47 @@ int addMatrix(Matrix A, Matrix B, Matrix *Output)
     return 1;
 }
 
+int multiplyMatrix(Matrix A, Matrix B, Matrix *Output)
+{
+    if (A.column != B.row)
+    {
+        printf("Couldn't multiply matrix: No. of columns of 1st matrix must be equal to no. of rows of the 2nd!\n");
+        return 0;
+    }
+    if (Output == NULL)
+    {
+        printf("Invalid output matrix!\n");
+        return 0;
+    }
+
+    Output->row = A.row;
+    Output->column = B.column;
+
+    Output->matrix = createMatrix(A.row, B.column);
+    for (int i = 0; i < A.row; i++)
+        for (int j = 0; j < B.column; j++)
+        {
+            Output->matrix[i][j] = 0;
+            for (int k = 0; k < B.column; k++)
+                Output->matrix[i][j] += A.matrix[i][k] * B.matrix[k][j];
+        }
+    return 1;
+}
 
 int main()
 {
-    Matrix A, B, C;
+    Matrix A, B, C, D;
     inputMatrix(&A);
     inputMatrix(&B);
-    if(addMatrix(A, B, &C))
+    if (addMatrix(A, B, &C))
+    {
+        printf("Addition of the two matrix:\n");
         displayMatrix(C);
+    }
+    if (multiplyMatrix(A, B, &D))
+    {
+        printf("Multiplication of the two matrix:\n");
+        displayMatrix(D);
+    }
     return 0;
 }
