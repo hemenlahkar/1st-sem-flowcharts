@@ -1,0 +1,20 @@
+#include<stdio.h>
+// Write a function to calculate factorial of a given number
+
+int factorial(int n)
+{
+    int fact = 1;
+    for(int i = 2; i <= n; i++)
+        fact *= i;
+    return fact;
+}
+
+int main()
+{
+    int n;
+    printf("Enter the number: ");
+    scanf("%d", &n);
+    int result = factorial(n);
+    printf("%d! = %d\n", n, result);
+    return 0;
+}
